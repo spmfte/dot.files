@@ -181,7 +181,6 @@ alias csit='tb -t @CSIT'
 alias tfin='tb -t @FINAL-CSIT'
 
 # Applications
-alias archWSL='ssh aidan@192.168.161.242'
 alias py='python3'
 alias code='codium'
 alias safari='rifle /Applications/Safari.app'
@@ -208,16 +207,12 @@ alias hideicons="defaults write com.apple.finder CreateDesktop false && killall 
 alias showicons="defaults write com.apple.finder CreateDesktop true && killall Finder"
 
 # Fun and humor
-alias milk='echo "Milk Sacks"'
-alias moo='echo fatass cow said moo'
-alias catputer='echo -e "\033[0;31mERROR:\033[0m This is a computer, not a catputer. We '\''putin cum, not cats!''"'
 alias whichtheme="echo $RANDOM_THEME"
 alias joke='curl -s https://official-joke-api.appspot.com/jokes/programming/random | jq ".[0] | .setup, .punchline"'
 
 
 # Tmux
 alias tks='tmux kill-server'
-alias sayhello='say hello, this is an artificially generated message, my creator aidan littman thought it would be funny to give me the ability to interact through auditory signal processing, so this is like a glorified "Hello World"'
 
 # Applications
 # # alias mail='open -a "Mail"'
@@ -245,7 +240,5 @@ alias emptytrash='rm -rf ~/.Trash/*'
 alias update='brew update && brew upgrade'
 alias cleanup='brew cleanup'
 alias tmpdir='td() { dir=$(mktemp -d); echo "Created temporary directory $dir"; cd "$dir"; trap "echo Removing temporary directory: $dir; rm -r \"$dir\"" EXIT; }; td'
-
-# Kali Linux
 alias wifiscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport scan'
 
