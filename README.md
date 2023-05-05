@@ -11,6 +11,11 @@ This repository contains configuration files and customizations for various tool
 - 🔗 Aliases I have written for enhanced productivity
 - 🪟 Yabai window manager configurations
 - 🐚 Shell enhancements using `shdk`
+- 📚 Custom Scripts
+  - 🎛️ `alias_manager`: GUI for command line alias management
+  - 🗒️ `notes.sh`: A simple note-taking script
+  - 🔑 `wifipass.sh`: Retrieve saved Wi-Fi passwords
+  - ⌨️ `yabind.sh`: Display skhdrc key bindings
 
 ## ⚙️ Installation and Usage
 
