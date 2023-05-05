@@ -16,6 +16,8 @@ This repository contains configuration files and customizations for various tool
   - 🗒️ `notes.sh`: A simple note-taking script
   - 🔑 `wifipass.sh`: Retrieve saved Wi-Fi passwords
   - ⌨️ `yabind.sh`: Display skhdrc key bindings
+  
+for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/main/Custom%20Scripts#readme)
 
 ## ⚙️ Installation and Usage
 
