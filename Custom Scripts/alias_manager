@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+ALIAS_FILE="$HOME/.zshrc"
+
+while true; do
+  action=$(dialog --stdout --title "Alias Manager" --menu "Please choose an action:" 0 0 0 \
+    1 "List aliases" \
+    2 "Edit aliases" \
+    3 "Add alias" \
+    4 "Exit")
+
+  if [ $? -eq 1 ]; then
+    clear
+    break
+  fi
+
+  case $action in
+    1)
+      alias_list=$(grep "^alias" "$ALIAS_FILE")
+      tempfile=$(mktemp)
+      echo "$alias_list" > "$tempfile"
+      dialog --title "Aliases" --textbox "$tempfile" 0 0
+      rm "$tempfile"
+      ;;
+
+    2)
+      ${EDITOR:-vim} "$ALIAS_FILE"
+      ;;
+
+    3)
+      alias_name=$(dialog --stdout --inputbox "Enter alias name:" 0 0)
+      alias_command=$(dialog --stdout --inputbox "Enter command:" 0 0)
+      echo "alias $alias_name='$alias_command'" >> "$ALIAS_FILE"
+      source "$ALIAS_FILE"
+      dialog --title "Success" --msgbox "Alias added." 5 20
+      ;;
+
+    4)
+      clear
+      break
+      ;;
+
+  esac
+done
+
