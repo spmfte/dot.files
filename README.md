@@ -45,11 +45,3 @@ For more information on managing and sharing dotfiles, check out these resources
 
 - [GitHub ❤ ~/](https://dotfiles.github.io/)
 - [Managing Your Dotfiles](https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/)
-
-## 📃 License
-
-These dotfiles and customizations are shared under the [MIT License](LICENSE).
-
----
-
-💡 Have any questions, suggestions, or improvements? Feel free to open an issue or submit a pull request! Happy customizing! 😄
