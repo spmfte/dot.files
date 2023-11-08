@@ -1,6 +1,6 @@
 # 🖥️ My Mac Dotfiles and Customizations 🚀
 
-Hello there! 👋 This repository contains my personal dotfiles and customizations for my Mac system. These configurations help me keep my development environment consistent, efficient, and enjoyable. Feel free to explore and use them for your own setup! 🌟
+This repository contains my personal dotfiles and customizations for my Mac system. These configurations help me keep my development environment consistent, efficient, and enjoyable. 
 
 ## 📁 Repository Contents
 
@@ -12,10 +12,6 @@ This repository contains configuration files and customizations for various tool
 - 🪟 Yabai window manager configurations
 - 🐚 Shell enhancements using `shdk`
 - 📚 Custom Scripts
-  - 🎛️ `alias_manager`: GUI for command line alias management
-  - 🗒️ `notes.sh`: A simple note-taking script
-  - 🔑 `wifipass.sh`: Retrieve saved Wi-Fi passwords
-  - ⌨️ `yabind.sh`: Display skhdrc key bindings
   
 for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/main/Custom%20Scripts#readme)
 
