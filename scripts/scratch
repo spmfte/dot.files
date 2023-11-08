@@ -1,0 +1,32 @@
+#!/bin/zsh
+
+# Navigate to the scratchpad directory (create it if it doesn't exist)
+cd ~/scratchpad
+
+# Generate a temporary file name
+temp_file=$(mktemp)
+
+# Open the temporary file in nvim
+nvim $temp_file
+
+# Ask the user whether to save the file
+read "save?Do you want to save this file? (y/N): "
+
+if [[ "$save" == "y" || "$save" == "Y" ]]; then
+  # Generate a file name based on the current date and time
+  current_time=$(date +"%m/%d/%y ":"  %I:%M %p")
+  formatted_time="${current_time// /_}"
+  formatted_time="${formatted_time//\//_}"
+  formatted_time="${formatted_time//:/_}"
+  formatted_time="${formatted_time//@/_}"
+  save_file="$formatted_time.txt"
+
+  # Rename the temporary file
+  mv $temp_file $save_file
+  echo "File saved as $save_file"
+else
+  # Remove the temporary file
+  rm $temp_file
+  echo "File discarded."
+fi
+
