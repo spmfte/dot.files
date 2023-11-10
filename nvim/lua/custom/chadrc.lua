@@ -19,7 +19,7 @@ M.ui = {
     },
   } ,
   hl_add = highlights.add,
-  transparency = false,
+  transparency = true,
   lsp_semantic_tokens = true,
 
  -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
