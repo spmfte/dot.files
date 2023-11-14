@@ -13,7 +13,7 @@ This repository contains configuration files and customizations for various tool
 - 🐚 Shell enhancements using `shdk`
 - 📚 Custom Scripts
   
-for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/main/Custom%20Scripts#readme)
+for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/6bdbead0fbc4e25873c18db2d3ae933b60c7afa8/scripts)
 
 ## ⚙️ Installation and Usage
 
