@@ -1,5 +1,3 @@
-# Here's an updated Python script based on your requirements
-
 def combine_ascii_art(file1, file2, padding=0, remove_leading_whitespace=False):
     with open(file1, 'r') as f1, open(file2, 'r') as f2:
         lines1 = f1.readlines()
