@@ -1,0 +1,4 @@
+Add (Shift A) ▸ Camera
+   Render Result
+Generate ▸ Solidify
+Generate ▸ Boolean
