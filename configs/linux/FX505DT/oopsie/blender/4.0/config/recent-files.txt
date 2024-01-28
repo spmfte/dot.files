@@ -1,2 +1,0 @@
-/home/aidan/blender/rpihat-linooxblend.blend
-/home/aidan/untitled.blend

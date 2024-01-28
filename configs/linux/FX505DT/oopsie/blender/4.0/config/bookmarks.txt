@@ -1,6 +1,0 @@
-[Bookmarks]
-[Recent]
-/home/aidan/Downloads/3D CAD Files/
-/home/aidan/blender/
-!Home
-/home/aidan/
