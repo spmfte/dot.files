@@ -1,5 +1,7 @@
 # Dotfiles
 
+> TODO: Tidy files
+
 This repository contains my personal dotfiles and customizations for my Mac and Linux systems. These configurations help me keep my development environment consistent, efficient, and enjoyable. 
 
 ## Repo Contents
