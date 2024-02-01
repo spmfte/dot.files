@@ -1,33 +1,30 @@
 # Dotfiles
 
-> TODO: Tidy files
+## Overview
 
-This repository contains my personal dotfiles and customizations for my Mac and Linux systems. These configurations help me keep my development environment consistent, efficient, and enjoyable. 
+This repository quietly organizes my dotfiles and configurations across a variety of systems. It's a simple, no-frills approach to keeping my development environment synchronized and tidy, whether I'm working on a Linux laptop or a Mac desktop.
 
-## Repo Contents
+## Structure
 
-This repository contains configuration files and customizations for various tools, applications, and aliases I use including:
+### Common
 
--  Homebrew packages and installed applications
--  Terminal configurations (e.g., different `.zshrc` configs)
--  Aliases I have written for enhanced productivity
--  Yabai window manager configurations
--  Shell enhancements using `shdk`
--  Custom Scripts
-  
-for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/6bdbead0fbc4e25873c18db2d3ae933b60c7afa8/scripts)
+The `common` directory is where I keep configurations that are shared across all systems. This includes essentials like Neovim and Tmux setups, along with a few scripts and shell configurations that I find handy.
 
-## Systems 
+- **Neovim (`nvim`)**: Just my Neovim setup with some lua configurations.
+- **Tmux (`tmux`)**: Basic Tmux configurations to keep things running smoothly.
+- **Scripts (`scripts`)**: A couple of utility scripts for Linux and MacOS.
+- **Window Managers (`wm`)**: Configs for AwesomeWM and others I occasionally dabble in.
+- **Shell (`zsh`)**: Zsh configurations with a few color schemes.
 
-- MacBook Pro M1 2020
-- Lenovo Yoga 710-151KB
-- HP Laptop - 15-ef0023dx
-- Lenovo Thinkpad T440s
-- ASUS TUF FX505DT
-- Desktop PC(AMD R9 5950x, NVIDIA RTX 3080Ti, 64GB RAM)
-## Resources
+### System-Specific
 
-For more information on managing and sharing dotfiles, check out these resources:
+Each system gets its own directory. Currently, there's just a setup for my ASUS FX505DT, but I plan to add more as I go. These are mostly for unique tweaks that don't fit into the common bucket.
 
-- [GitHub ❤ ~/](https://dotfiles.github.io/)
-- [Managing Your Dotfiles](https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/)
+- **ASUS FX505DT (`ASUS-FX505DT`)**: Specific configs for my ASUS laptop.
+- **Other Systems**: Directories like `MacBook-Pro-M1-2020`, `Lenovo-Yoga-710`, etc., are placeholders for future use.
+
+## Philosophy
+
+This repo is my humble attempt to keep things organized without overcomplicating them. It's a continuous work in progress, and I tweak it as I learn and grow in my journey as a developer.
+
+Feel free to browse around, and if something catches your eye or if you have a suggestion, I'm all ears!
