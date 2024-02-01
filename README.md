@@ -17,6 +17,14 @@ This repository contains configuration files and customizations for various tool
   
 for more info see [Custom Scripts](https://github.com/spmfte/dot.files/tree/6bdbead0fbc4e25873c18db2d3ae933b60c7afa8/scripts)
 
+## Systems 
+
+- MacBook Pro M1 2020
+- Lenovo Yoga 710-151KB
+- HP Laptop - 15-ef0023dx
+- Lenovo Thinkpad T440s
+- ASUS TUF FX505DT
+- Desktop PC(AMD R9 5950x, NVIDIA RTX 3080Ti, 64GB RAM)
 ## Resources
 
 For more information on managing and sharing dotfiles, check out these resources:
