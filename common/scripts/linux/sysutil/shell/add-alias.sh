@@ -15,7 +15,7 @@ fi
 # Variables
 alias_name=$1
 alias_command=$2
-alias_file="$HOME/.zshrc"
+alias_file="$HOME/.alias"
 
 # Check if alias already exists
 if grep -q "alias $alias_name=" $alias_file; then
@@ -36,4 +36,3 @@ echo -e "${GREEN}Alias \"$alias_name\" added successfully.${RESET}"
 
 # Reload the .zshrc file
 source $alias_file
-
