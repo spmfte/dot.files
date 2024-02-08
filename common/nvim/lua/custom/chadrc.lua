@@ -4,7 +4,9 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
-
+------------------------------------------------------------------------
+------------------------------- BEGIN COPY -----------------------------
+------------------------------------------------------------------------
 M.ui = {
   theme = "bearded-arc",
   theme_toggle = { "bearded-arc", "catppuccin" },
@@ -125,6 +127,9 @@ vim.cmd("command! Italic normal! i*Italic Text*\\<CR>")
 -- Add a vim command to toggle transparency using NvChad's method
 vim.cmd("command! Bg lua require'base46'.toggle_transparency()")
 
+------------------------------------------------------------------------
+------------------------------- END COPY -------------------------------
+------------------------------------------------------------------------
 M.plugins = "custom.plugins"
 
 -- Check core.mappings for table structure
