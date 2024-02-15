@@ -21,9 +21,6 @@ set hlsearch
 set clipboard=unnamed
 set laststatus=2
 syntax on
-set nocompatible              " Be iMproved, required
-filetype off                  " Required
-filetype plugin indent on    " Required
 
 " Plugin Management with Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -59,6 +56,7 @@ Plugin 'kkoomen/vim-doge'
 Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
 colorscheme papercolor
+set nocompatible              " Be iMproved, required
 
 " Key Mappings for Enhanced Productivity
 map <C-n> :NERDTreeToggle<CR>
@@ -109,6 +107,10 @@ set lazyredraw
 " Syntax highlighting enhancements
 let g:polyglot_disabled = ['autoindent']
 syntax enable
+filetype off                  " Required
+filetype plugin on
+filetype plugin indent on    " Required
+
 
 " COC Enhancements
 
@@ -169,37 +171,17 @@ let g:startify_lists = [
 " Define bookmarks for quick access
 let g:startify_bookmarks = [
       \ { 'i': '~/.vimrc' },
-      \ { 'p': '~/projects' },
-      \ { 't': '~/todo.txt' },
+      \ { 'p': '~/portfolio/' },
+      \ { 't': '~/.config/' },
       \ ]
 
 " Define custom commands for quick actions
 let g:startify_commands = [
       \ { 'name': 'Update Plugins', 'cmd': 'PluginUpdate' },
-      \ { 'name': 'Change Theme',   'cmd': 'Telescope themes' },
       \ ]
-
-" Define custom header with ASCII art
-let g:startify_custom_header = 'startify#center(startify#fortune#boxed())'
 
 " Define custom footer with additional information or actions
 let g:startify_custom_footer = ['   Vim not NeoVim, yo!']
-
-" Define the function for the theme switcher using FZF for live grep
-function! s:switch_theme()
-  let themes = split(globpath('~/.vim/plugged', '*/colors/*.vim'), '\n')
-  call fzf#run(fzf#wrap({
-        \ 'source':  map(themes, 'fnamemodify(v:val, ":t:r")'),
-        \ 'sink':    's:apply_theme',
-        \ 'options': '--prompt="Select Theme> "',
-        \ }))
-endfunction
-
-function! s:apply_theme(theme)
-  execute 'colorscheme ' . a:theme
-endfunction
-
-command! -nargs=* -complete=customlist,s:switch_theme Telescope call s:switch_theme()
 
 " Styling for Startify
 highlight StartifyHeader ctermfg=grey cterm=bold
@@ -210,16 +192,26 @@ highlight StartifySlash ctermfg=green cterm=italic
 highlight StartifyFile ctermfg=yellow cterm=bold
 highlight StartifyBracket ctermfg=darkgrey
 
-" Borders for Startify (using ANSI escape codes, customize as needed)
-let g:startify_custom_header = startify#center(map([
-      \ '╭────────────────────────────────────────────────────────────────╮',
-      \ '│                              Welcome                           │',
-      \ '│░▀█▀▒██▀░▀▄▀░▀█▀░░▒█▀▒▄▀▄░█▄░█░▄▀▀░▀▄▀░▒█▒░█▄▄░█▒█░▒█▒▒░░█▀░█▀█░│',
-      \ '│              ▌║█║▌│║▌│║▌║▌█║Vim User ▌│║▌║▌│║║▌█║▌║            │',   
-      \ '│░▀█▀▒██▀░▀▄▀░▀█▀░░▒█▀▒▄▀▄░█▄░█░▄▀▀░▀▄▀░▒█▒░█▄▄░█▒█░▒█▒▒░░█▀░█▀█░│',
-      \ '│                                                                │',   
-      \ '╰────────────────────────────────────────────────────────────────╯'
-      \ ], '"   " . v:val'))
 
-" Open Startify at Vim startup if no files were specified
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | Startify | endif
+"let g:startify_custom_header = startify#center(split(system('figlet -f poison "Kora VIM"'), '\n'))
+function! EnhancedStartifyHeader()
+    " Use figlet to generate ASCII art with the poison font
+    let l:asciiArt = system('figlet -f whimsy  "Kora Vim"')
+    
+    " Split the ASCII art into lines for processing
+    let l:lines = split(l:asciiArt, "\n")
+    
+    " Calculate width for the border based on the longest line
+    let l:maxWidth = max(map(copy(l:lines), 'strdisplaywidth(v:val)'))
+    let l:borderTop = '╔' . repeat('═', l:maxWidth + 2) . '╗'
+    let l:borderBottom = '╚' . repeat('═', l:maxWidth + 2) . '╝'
+    
+    " Add padding to each line and a vertical border
+    let l:lines = map(l:lines, '"║ " . v:val . " ║"')
+    
+    " Combine everything
+    let l:header = [l:borderTop] + l:lines + [l:borderBottom]
+    
+    return startify#center(l:header)
+endfunction
+let g:startify_custom_header = EnhancedStartifyHeader()
