@@ -154,6 +154,21 @@ if has('termguicolors')
  set termguicolors
 endif
 
+" 2024-02-15''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+function! ChooseColorScheme()
+    let schemes = split(globpath(&rtp, "colors/*.vim"), "\n")
+    let scheme_names = map(schemes, 'fnamemodify(v:val, ":t:r")')
+    echo "Select a color scheme:"
+    let selections = map(copy(scheme_names), '"[" . (v:key + 1) . "] " . v:val')
+    let selection = inputlist(insert(selections, "Type number and <Enter> or click with the mouse (q or empty cancels):"))
+    if selection >= 1 && selection <= len(scheme_names)
+        " Extract only the scheme name from the choice
+        let chosen_scheme = scheme_names[selection - 1]
+        execute 'colorscheme ' . chosen_scheme
+    else
+        echo "Invalid selection or operation cancelled."
+    endif
+endfunction
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*"'
 " Startify Configuration for Enhanced UI/UX
@@ -178,6 +193,7 @@ let g:startify_bookmarks = [
 " Define custom commands for quick actions
 let g:startify_commands = [
       \ { 'name': 'Update Plugins', 'cmd': 'PluginUpdate' },
+      \ { 'name': 'Change Theme', 'cmd': 'call ChooseColorScheme()' },
       \ ]
 
 " Define custom footer with additional information or actions
