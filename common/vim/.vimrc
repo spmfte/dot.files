@@ -1,10 +1,11 @@
 " Core Settings 
+set runtimepath+=~/.vim/bundle/
 set statusline=%f\ %p%%\ %l:%c
+set t_Co=256
 let mapleader = " "
 let g:tagbar_ctags_bin = '/opt/homebrew/opt/ctags/bin/ctags'
 set termguicolors
 set background=light
-colorscheme zellner 
 set t_Co=8
 set history=10000
 set number
@@ -18,10 +19,11 @@ set mouse=a
 set incsearch
 set hlsearch
 set clipboard=unnamed
+set laststatus=2
 syntax on
-
-
-
+set nocompatible              " Be iMproved, required
+filetype off                  " Required
+filetype plugin indent on    " Required
 
 " Plugin Management with Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -29,6 +31,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mhinz/vim-startify'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'preservim/nerdtree'
@@ -53,11 +56,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'junegunn/gv.vim'
 Plugin 'w0rp/ale'
 Plugin 'kkoomen/vim-doge'
+Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
-
-
-
-
+colorscheme papercolor
 
 " Key Mappings for Enhanced Productivity
 map <C-n> :NERDTreeToggle<CR>
@@ -74,15 +75,11 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader><leader> :<Plug>(easymotion-prefix)<CR>
 nnoremap <C-i> :FloatermToggle<CR>
 
-
-
-
 " FZF Integration for File Searching
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :RG<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fh :Helptags<CR>
-
 
 
 
@@ -99,29 +96,19 @@ nnoremap <C-l> <C-w>l
 :set nolist
 nnoremap <leader>1 :split<CR>:NERDTreeExplore<CR>
 
-
-
-
 " Vim Airline: Enhanced status bar
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline_theme='bubblegum'
-
-
+let g:airline_theme='murmur'
 
 
 " Improve startup time
 set lazyredraw
 
 
-
-
 " Syntax highlighting enhancements
 let g:polyglot_disabled = ['autoindent']
 syntax enable
-
-
-
 
 " COC Enhancements
 
@@ -145,8 +132,6 @@ function! s:show_documentation()
 endfunction
 
 
-
-
 " Make Vim more resilient: Auto-reload vimrc file on changes
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
@@ -164,9 +149,77 @@ endif
 
 " Enable true color support
 if has('termguicolors')
-  set termguicolors
+ set termguicolors
 endif
 
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*"'
+" Startify Configuration for Enhanced UI/UX
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_files_number = 20
 
+" Define the structure and content of the Startify screen
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']              },
+      \ { 'type': 'files',     'header': ['   Recently Used Files']   },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']             },
+      \ { 'type': 'commands',  'header': ['   Quick Commands']        },
+      \ ]
+
+" Define bookmarks for quick access
+let g:startify_bookmarks = [
+      \ { 'i': '~/.vimrc' },
+      \ { 'p': '~/projects' },
+      \ { 't': '~/todo.txt' },
+      \ ]
+
+" Define custom commands for quick actions
+let g:startify_commands = [
+      \ { 'name': 'Update Plugins', 'cmd': 'PluginUpdate' },
+      \ { 'name': 'Change Theme',   'cmd': 'Telescope themes' },
+      \ ]
+
+" Define custom header with ASCII art
+let g:startify_custom_header = 'startify#center(startify#fortune#boxed())'
+
+" Define custom footer with additional information or actions
+let g:startify_custom_footer = ['   Vim not NeoVim, yo!']
+
+" Define the function for the theme switcher using FZF for live grep
+function! s:switch_theme()
+  let themes = split(globpath('~/.vim/plugged', '*/colors/*.vim'), '\n')
+  call fzf#run(fzf#wrap({
+        \ 'source':  map(themes, 'fnamemodify(v:val, ":t:r")'),
+        \ 'sink':    's:apply_theme',
+        \ 'options': '--prompt="Select Theme> "',
+        \ }))
+endfunction
+
+function! s:apply_theme(theme)
+  execute 'colorscheme ' . a:theme
+endfunction
+
+command! -nargs=* -complete=customlist,s:switch_theme Telescope call s:switch_theme()
+
+" Styling for Startify
+highlight StartifyHeader ctermfg=grey cterm=bold
+highlight StartifyFooter ctermfg=grey cterm=italic
+highlight StartifyNumber ctermfg=red
+highlight StartifyPath ctermfg=cyan cterm=italic
+highlight StartifySlash ctermfg=green cterm=italic
+highlight StartifyFile ctermfg=yellow cterm=bold
+highlight StartifyBracket ctermfg=darkgrey
+
+" Borders for Startify (using ANSI escape codes, customize as needed)
+let g:startify_custom_header = startify#center(map([
+      \ '╭────────────────────────────────────────────────────────────────╮',
+      \ '│                              Welcome                           │',
+      \ '│░▀█▀▒██▀░▀▄▀░▀█▀░░▒█▀▒▄▀▄░█▄░█░▄▀▀░▀▄▀░▒█▒░█▄▄░█▒█░▒█▒▒░░█▀░█▀█░│',
+      \ '│              ▌║█║▌│║▌│║▌║▌█║Vim User ▌│║▌║▌│║║▌█║▌║            │',   
+      \ '│░▀█▀▒██▀░▀▄▀░▀█▀░░▒█▀▒▄▀▄░█▄░█░▄▀▀░▀▄▀░▒█▒░█▄▄░█▒█░▒█▒▒░░█▀░█▀█░│',
+      \ '│                                                                │',   
+      \ '╰────────────────────────────────────────────────────────────────╯'
+      \ ], '"   " . v:val'))
+
+" Open Startify at Vim startup if no files were specified
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | Startify | endif
