@@ -90,6 +90,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" Added 2024-02-16
 nnoremap ; :
 :set nolist
 nnoremap <leader>1 :split<CR>:NERDTreeExplore<CR>
