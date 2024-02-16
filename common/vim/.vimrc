@@ -5,7 +5,7 @@ set t_Co=256
 let mapleader = " "
 let g:tagbar_ctags_bin = '/opt/homebrew/opt/ctags/bin/ctags'
 set termguicolors
-set background=light
+"set background=light  Removed 2024-02-15; Added function in startify instead
 set t_Co=8
 set history=10000
 set number
@@ -55,7 +55,7 @@ Plugin 'w0rp/ale'
 Plugin 'kkoomen/vim-doge'
 Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
-colorscheme papercolor
+"colorscheme papercolor
 set nocompatible              " Be iMproved, required
 
 " Key Mappings for Enhanced Productivity
@@ -178,24 +178,18 @@ let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_files_number = 20
 
 " Define the structure and content of the Startify screen
-let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': ['   Sessions']              },
-      \ { 'type': 'files',     'header': ['   Recently Used Files']   },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']             },
-      \ { 'type': 'commands',  'header': ['   Quick Commands']        },
-      \ ]
-
-" Define bookmarks for quick access
-let g:startify_bookmarks = [
-      \ { 'i': '~/.vimrc' },
-      \ { 'p': '~/portfolio/' },
-      \ { 't': '~/.config/' },
-      \ ]
-
-" Define custom commands for quick actions
 let g:startify_commands = [
       \ { 'name': 'Update Plugins', 'cmd': 'PluginUpdate' },
       \ { 'name': 'Change Theme', 'cmd': 'call ChooseColorScheme()' },
+      \ { 'name': 'Toggle Background', 'cmd': 'call ToggleBackground()' },
+      \ ]
+
+" Define bookmarks for quick access
+let g:startify_bookmarks = [ 
+      \ { 'i': '~/.vimrc' },
+      \ { 'z': '~/.zshrc' },
+      \ { 'p': '~/portfolio/' },
+      \ { 't': '~/.config/' },
       \ ]
 
 
@@ -213,6 +207,16 @@ highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
 
 
 
+function! ToggleBackground()
+  if &background == 'dark'
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
+
+" Optional: Map the function to a keybinding
+nnoremap <F5> :call ToggleBackground()<CR>
 "let g:startify_custom_header = startify#center(split(system('figlet -f poison "Kora VIM"'), '\n'))
 function! EnhancedStartifyHeader()
     " Use figlet to generate ASCII art with the poison font
