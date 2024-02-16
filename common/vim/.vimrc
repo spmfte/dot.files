@@ -118,43 +118,31 @@ endfunction
 " 7. Startify Configuration
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_files_number = 20
-let g:startify_commands = [
-      \ { 'name': 'Update Plugins', 'cmd': 'PluginUpdate' },
-      \ { 'name': 'Change Theme', 'cmd': 'call ChooseColorScheme()' },
-      \ { 'name': 'Toggle Background', 'cmd': 'call ToggleBackground()' },
+
+" Merge MRU sections or clearly define their purpose
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions'] },
+      \ { 'type': 'files',     'header': ['   Most Recently Used Files'] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+      \ { 'type': 'commands',  'header': ['   Quick Commands'] },
       \ ]
+
+" Define commands with clear names and actions
+let g:startify_commands = [
+      \ { 'name': 'Update Plugins (U)', 'cmd': 'PluginUpdate' },
+      \ { 'name': 'Change Theme (cs)', 'cmd': 'call ChooseColorScheme()' },
+      \ { 'name': 'Toggle Background (tb)', 'cmd': 'call ToggleBackground()' },
+      \ ]
+
+" Define bookmarks for quick access
 let g:startify_bookmarks = [
       \ { 'i': '~/.vimrc' },
       \ { 'z': '~/.zshrc' },
       \ { 'p': '~/portfolio/' },
       \ { 't': '~/.config/' },
       \ ]
-let g:startify_custom_footer = ['   Vim not NeoVim, yo!']
 
-" 8. Additional Functions and Commands
-function! ChooseColorScheme()
-    let schemes = split(globpath(&rtp, "colors/*.vim"), "\n")
-    let scheme_names = map(schemes, 'fnamemodify(v:val, ":t:r")')
-    echo "Select a color scheme:"
-    let selections = map(copy(scheme_names), '"[" . (v:key + 1) . "] " . v:val')
-    let selection = inputlist(insert(selections, "Type number and <Enter> or click with the mouse (q or empty cancels):"))
-    if selection >= 1 && selection <= len(scheme_names)
-        let chosen_scheme = scheme_names[selection - 1]
-        execute 'colorscheme ' . chosen_scheme
-    else
-        echo "Invalid selection or operation cancelled."
-    endif
-endfunction
-
-function! ToggleBackground()
-  if &background == 'dark'
-    set background=light
-  else
-    set background=dark
-  endif
-endfunction
-nnoremap <F5> :call ToggleBackground()<CR>
-
+" Customize header
 function! EnhancedStartifyHeader()
     let l:asciiArt = system('figlet -f whimsy  "Kora Vim"')
     let l:lines = split(l:asciiArt, "\n")
@@ -166,6 +154,39 @@ function! EnhancedStartifyHeader()
     return startify#center(l:header)
 endfunction
 let g:startify_custom_header = EnhancedStartifyHeader()
+
+" Customize footer
+let g:startify_custom_footer = ['   Vim not NeoVim, yo!']
+
+" Ensure 'commands' display their names directly on Startify
+" If they're still showing as [cmd], verify Startify's latest documentation or GitHub issues for potential updates or bugs related to command rendering.
+
+" 8. Additional Functions and Commands
+
+" Function to choose a color scheme interactively
+function! ChooseColorScheme()
+    let schemes = split(globpath(&rtp, "colors/*.vim"), "\n")
+    let schemeNames = map(schemes, 'fnamemodify(v:val, ":t:r")')
+    echo "Select a color scheme:"
+    let selections = map(copy(schemeNames), '"[" . (v:key + 1) . "] " . v:val')
+    let selection = inputlist(insert(selections, "Type number and <Enter> or click with the mouse (q or empty cancels):"))
+    if selection >= 1 && selection <= len(schemeNames)
+        let chosenScheme = schemeNames[selection - 1]
+        execute 'colorscheme ' . chosenScheme
+    else
+        echo "Invalid selection or operation cancelled."
+    endif
+endfunction
+
+" Function to toggle the background setting
+function! ToggleBackground()
+    if &background == 'dark'
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
+nnoremap <F5> :call ToggleBackground()<CR>
 
 " 9. Auto Commands
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
