@@ -150,7 +150,6 @@ endif
 
 
 
-" Aesthetic Enhancements
 
 " Enable true color support
 if has('termguicolors')
