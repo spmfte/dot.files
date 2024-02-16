@@ -59,7 +59,10 @@ colorscheme papercolor
 set nocompatible              " Be iMproved, required
 
 " Key Mappings for Enhanced Productivity
-map <C-n> :NERDTreeToggle<CR>
+let g:goyo_width = '100%'
+let g:goyo_height = '100%'
+
+noremap <C-c> :%y+<CR>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -154,7 +157,7 @@ if has('termguicolors')
  set termguicolors
 endif
 
-" 2024-02-15''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 function! ChooseColorScheme()
     let schemes = split(globpath(&rtp, "colors/*.vim"), "\n")
     let scheme_names = map(schemes, 'fnamemodify(v:val, ":t:r")')
@@ -196,7 +199,7 @@ let g:startify_commands = [
       \ { 'name': 'Change Theme', 'cmd': 'call ChooseColorScheme()' },
       \ ]
 
-" Define custom footer with additional information or actions
+
 let g:startify_custom_footer = ['   Vim not NeoVim, yo!']
 
 " Styling for Startify
@@ -207,6 +210,8 @@ highlight StartifyPath ctermfg=cyan cterm=italic
 highlight StartifySlash ctermfg=green cterm=italic
 highlight StartifyFile ctermfg=yellow cterm=bold
 highlight StartifyBracket ctermfg=darkgrey
+highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
+
 
 
 "let g:startify_custom_header = startify#center(split(system('figlet -f poison "Kora VIM"'), '\n'))
