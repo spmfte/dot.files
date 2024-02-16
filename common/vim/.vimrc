@@ -24,6 +24,8 @@ set lazyredraw
 if has('termguicolors')
  set termguicolors
 endif
+" load polygot before the plugin
+let g:polyglot_disabled = ['autoindent']
 
 " 2. Plugin Management with Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -97,7 +99,6 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline_theme='murmur'
 
 " 5. Syntax Highlighting and Filetype Configuration
-let g:polyglot_disabled = ['autoindent']
 syntax enable
 
 " 6. COC Configuration and Mappings
