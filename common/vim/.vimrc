@@ -143,10 +143,10 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 
 " Ensure backward compatibility with older Vim versions
-if v:version < 800
+"if v:version < 800
 
   " Custom tweaks for older Vim versions
-endif
+"endif
 
 
 
