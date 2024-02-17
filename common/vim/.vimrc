@@ -98,7 +98,25 @@ nnoremap <leader>1 :split<CR>:NERDTreeExplore<CR>
 " 4. Vim Airline Configuration
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline_theme='murmur'
+"let g:airline_theme='murmur'
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'inactive': {
+  \   'left': [ [ 'filename' ] ]
+  \ }
+  \ }
+
+let g:airline_left_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_alt_sep = '|'
+
+
 
 " 5. Syntax Highlighting and Filetype Configuration
 syntax enable
@@ -210,3 +228,4 @@ highlight StartifySlash ctermfg=green cterm=italic
 highlight StartifyFile ctermfg=yellow cterm=bold
 highlight StartifyBracket ctermfg=darkgrey
 highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
+
