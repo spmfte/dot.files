@@ -8,7 +8,7 @@ set t_Co=8
 set history=10000
 set number
 set cursorline
-set fillchars=vert:\│
+" need to fix this ---- set fillchars=vert:\│
 set cursorcolumn
 set expandtab
 set tabstop=4
