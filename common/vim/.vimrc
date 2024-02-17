@@ -8,6 +8,7 @@ set t_Co=8
 set history=10000
 set number
 set cursorline
+set fillchars=vert:\│
 set cursorcolumn
 set expandtab
 set tabstop=4
@@ -19,6 +20,7 @@ set hlsearch
 set clipboard=unnamed
 set laststatus=2
 syntax on
+
 set nocompatible
 set lazyredraw
 if has('termguicolors')
@@ -229,3 +231,10 @@ highlight StartifyFile ctermfg=yellow cterm=bold
 highlight StartifyBracket ctermfg=darkgrey
 highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
 
+" 13. NERDTree Styling 2024-02-16
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" 14. WebDevIcons Styling 2024-02-17
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
