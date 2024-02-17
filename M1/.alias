@@ -64,8 +64,8 @@ alias trec='terminalizer'
 alias ubuntu-connect="ssh aidan@98.176.216.10"
 alias ubuntu-on="wakeonlan 50:eb:f6:ce:96:6d"
 alias update='brew update && brew upgrade && brew cleanup | lolcat -a -d 1 -s 100'
-alias vi='nvim'
-alias vim='nvim'
+# alias vi='nvim'
+# alias vim='nvim'
 alias weather='curl wttr.in'
 alias web='open -a "Safari"'
 alias whichtheme="echo $RANDOM_THEME"
@@ -74,6 +74,5 @@ alias wifiscan='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/
 alias wilson='ssh aidan@braincraft'
 alias yabind='cd /usr/bin && yabind.sh && cd ~'
 alias yconf='vi ~/.yabairc'
-alias youtube='yt() { open -a "Safari" "https://www.youtube.com/results?search_query=$*"; }; yt'
 alias ysa="sudo yabai --load-sa"
-alias yt='yt() { open -a "Safari" "https://www.youtube.com/results?search_query=$*"; }; yt'
+alias yt='yt() { open "https://www.youtube.com/results?search_query=$*"; }; yt'
