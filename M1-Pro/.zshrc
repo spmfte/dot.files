@@ -18,3 +18,4 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+eval "$(zoxide init zsh)"
