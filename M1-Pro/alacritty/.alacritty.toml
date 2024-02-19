@@ -1,0 +1,30 @@
+import = [
+  "~/.config/alacritty/catppuccin-latte.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+# position = { x = 400, y = 110}
+dimensions = { columns = 175, lines = 60}
+padding = { x = 8, y = 8}
+dynamic_padding = true
+# decorations = "Buttonless"
+# Unhighlight for rounded borders (macos only)
+decorations = "None"
+opacity = 0.75
+blur = true
+option_as_alt = "Both"
+
+[scrolling]
+multiplier = 1
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular"}
+
+[selection]
+save_to_clipboard = true 
+
+[mouse]
+hide_when_typing = true
