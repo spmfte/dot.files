@@ -67,6 +67,8 @@ filetype off
 filetype plugin on
 filetype plugin indent on
 
+colorscheme catppuccin_macchiato 
+
 " 3. Key Mappings for Enhanced Productivity
 let g:goyo_width = '100%'
 let g:goyo_height = '100%'
@@ -217,20 +219,19 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 10. Color and Theme Settings
 " Uncomment this if you want to use a specific colorscheme
-colorscheme catppuccin_macchiato 
 
 " 11. FZF Default Command Configuration
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*"'
 
 " 12. Styling for Startify
-highlight StartifyHeader ctermfg=grey cterm=bold
-highlight StartifyFooter ctermfg=grey cterm=italic
-highlight StartifyNumber ctermfg=red
-highlight StartifyPath ctermfg=cyan cterm=italic
-highlight StartifySlash ctermfg=green cterm=italic
-highlight StartifyFile ctermfg=yellow cterm=bold
-highlight StartifyBracket ctermfg=darkgrey
-highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
+"highlight StartifyHeader ctermfg=grey cterm=bold
+"highlight StartifyFooter ctermfg=grey cterm=italic
+"highlight StartifyNumber ctermfg=red
+"highlight StartifyPath ctermfg=cyan cterm=italic
+"highlight StartifySlash ctermfg=green cterm=italic
+"highlight StartifyFile ctermfg=yellow cterm=bold
+"highlight StartifyBracket ctermfg=darkgrey
+"highlight StartifySectionHeader guifg=#FFD700 guibg=#008080 gui=bold
 
 " 13. NERDTree Styling 2024-02-16
 let g:NERDTreeDirArrowExpandable = '▸'
