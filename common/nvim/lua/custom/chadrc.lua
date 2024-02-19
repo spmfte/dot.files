@@ -9,7 +9,7 @@ local highlights = require "custom.highlights"
 ------------------------------------------------------------------------
 M.ui = {
   theme = "bearded-arc",
-  theme_toggle = { "bearded-arc", "catppuccin" },
+  theme_toggle = { "bearded-arc", "decay" },
   hl_override = {
      NvDashAscii = {
       bg ="none",
