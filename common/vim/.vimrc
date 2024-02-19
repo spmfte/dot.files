@@ -47,6 +47,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'itchyny/lightline.vim'
+Plugin 'catppuccin/vim', { 'as': 'catppuccin' }
 Plugin 'voldikss/vim-floaterm'
 Plugin 'mhinz/vim-signify'
 Plugin 'skywind3000/asyncrun.vim'
@@ -216,7 +217,7 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 10. Color and Theme Settings
 " Uncomment this if you want to use a specific colorscheme
-" colorscheme papercolor
+colorscheme papercolor
 
 " 11. FZF Default Command Configuration
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*"'
