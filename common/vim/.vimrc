@@ -217,7 +217,7 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 10. Color and Theme Settings
 " Uncomment this if you want to use a specific colorscheme
-colorscheme papercolor
+colorscheme catppuccin_macchiato 
 
 " 11. FZF Default Command Configuration
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git/*"'
