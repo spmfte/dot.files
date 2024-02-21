@@ -3,7 +3,8 @@ export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export PYTHON="/opt/homebrew/bin/python3"
 export PATH="/opt/homebrew/bin:$PATH"
-ZSH_THEME="robbyrussell"
+export EDITOR=nvim
+ZSH_THEME="awesomepanda"
 
 plugins=(git)
 
@@ -19,3 +20,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 eval "$(zoxide init zsh)"
+
+eval $(thefuck --alias)
