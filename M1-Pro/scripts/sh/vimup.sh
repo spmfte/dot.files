@@ -51,4 +51,4 @@ fi
 
 echo "Done!"
 
-say -v Han\ \(Premium\) Your files are uh have been uploaded uh successfully
+say -v Han\ \(Premium\) Your vim configuration files are uh have been uploaded uh successfully
