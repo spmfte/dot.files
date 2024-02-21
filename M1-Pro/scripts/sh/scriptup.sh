@@ -53,7 +53,7 @@ echo "Done!"
 
 # Cross-platform auditory feedback
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  say -v Han\ \(Premium\) Your vim configuration files are uh have been uploaded uh successfully
+  say -v Han\ \(Premium\) Your script files have been updated and uploaded successfully.
 else
   echo "Your script files have been updated and uploaded successfully."
 fi
