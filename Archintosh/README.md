@@ -13,8 +13,3 @@
         .oossssso-````/ossssss+`         ├─  1440x900 @ 59.84Hz
        -osssssso.      :ssssssso.        ├─  1.46GiB / 3.74GiB (38%)
       :osssssss/        osssso+++.       ├─  (/)  5.0G / 20G (27%)
-     /ossssssss/        +ssssooo/-       ╰─󰄉  1 hour, 1 min
-   `/ossssso+/:-        -:/+osssso+-
-  `+sso+:-`                 `.-/+oso:                              
- `++:.                           `-/+/
- .`                                 `/
