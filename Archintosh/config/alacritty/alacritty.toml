@@ -1,0 +1,36 @@
+import = [
+  "~/.config/alacritty/catppuccin-macchiato.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 5, y = 5}
+dynamic_padding = true
+# decorations = "Buttonless"
+decorations = "None"
+opacity = 0.75
+blur = true
+
+[scrolling]
+multiplier = 3 
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular"}
+size = 8 
+
+[selection]
+save_to_clipboard = true 
+
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+program = "/sbin/zsh"
+args = [
+  "-l",
+  "-c",
+  "tmux new-session -c '${HOME}'"
+]
