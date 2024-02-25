@@ -4,7 +4,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export PYTHON="/opt/homebrew/bin/python3"
 export PATH="/opt/homebrew/bin:$PATH"
 export EDITOR=nvim
-ZSH_THEME="awesomepanda"
+
+ZSH_THEME="mrp"
 
 plugins=(git)
 
@@ -22,3 +23,4 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 eval $(thefuck --alias)
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
