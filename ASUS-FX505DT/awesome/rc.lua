@@ -16,11 +16,11 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Custom Widgets Folder
+
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
-local pacman_widget = require("awesome-wm-widgets.pacman-widget.pacman")
 local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
-
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -175,9 +175,12 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-
-    -- Create a promptbox for each screen
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1]) 
+    -- Add padding
+  s.padding = { left = 2, right = 2, top = 2, bottom = 2 }
+    -- Set the gap between windows
+    beautiful.useless_gap = 2
+  -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -223,9 +226,9 @@ awful.screen.connect_for_each_screen(function(s)
             cpu_widget(),
             ram_widget(),
             batteryarc_widget(),
-            pacman_widget(),
             mytextclock,
             s.mylayoutbox,
+            logout_menu_widget(),
         },
     }
 end)
@@ -286,6 +289,8 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
+    -- awful.key({ modkey }, "space", function() awful.spawn("rofi -show drun") end,
+          -- {description = "launch rofi", group = "launcher"}),
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -310,8 +315,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, "Shift" }, "f", function () awful.spawn("firefox") end,
-              {description = "open firefox", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "f", function () awful.spawn("chromium") end,
+              {description = "open chromium", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -385,11 +390,7 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"}),
-    awful.key({modkey}, "space", function()
-    awful.spawn.with_shell("rofi -show drun &>> /tmp/rofi.log")
-    end, { ... } )
-
+        {description = "(un)maximize horizontally", group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -479,7 +480,7 @@ awful.rules.rules = {
     -- Floating clients.
     { rule_any = {
         instance = {
-          "DTA",  -- Firefox addon DownThemAll.
+          "DTA",  -- chromium addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
         },
@@ -512,8 +513,8 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
+    -- Set chromium to always map on the tag named "2" on screen 1.
+    -- { rule = { class = "chromium" },
     --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
@@ -585,3 +586,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 ---------------------------------------------------------------------------------------------
 --#region(CUSTOM) 2023-12-01 
 -- awful.spawn("/home/aidan/scripts/wallpaper_changer.sh")
+awful.spawn.with_shell("picom &")
+awful.spawn.with_shell("xbindkeys &")
+awful.spawn.with_shell("albert &")
+awful.spawn.with_shell("flameshot")
+awful.spawn.with_shell("~/scripts/UI/randomw_wallpaper.sh")
