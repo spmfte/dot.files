@@ -1,4 +1,4 @@
-> *TODO: need to refactor again* 
+> *TODO:* need to refactor again 
 # Dotfiles
 
 ## Overview
