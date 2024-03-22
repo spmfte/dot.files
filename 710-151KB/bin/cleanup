@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo pacman -Rns $(pacman -Qdtq)
+sudo pacman -Sc
+rm -rf ~/.cache/*
+trash-empty

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Directories to copy
+directories=("alacritty" "awesome" "bottom" "dunst" "htop" "i3" "neofetch" "nvim" "picom" "polybar" "rofi" "ranger" "tmux")
+
+# Base directories
+config_dir="$HOME/.config/"
+dotfiles_dir="$HOME/dotfiles/710-151KB/"
+
+# Copy function
+copy_config() {
+    local config_name="$1"
+    local src="${config_dir}${config_name}"
+    local dest="${dotfiles_dir}${config_name}"
+
+    # Check if the source directory exists
+    if [ -d "$src" ]; then
+        echo "Copying $config_name from $src to $dest"
+        # Remove the destination directory if it exists
+        rm -rf "$dest"
+        # Copy the directory
+        cp -r "$src" "$dest"
+        # Remove any .git directories
+        find "${dest}" -type d -name ".git" -exec rm -rf {} +
+    else
+        echo "Directory $src does not exist, skipping."
+    fi
+}
+
+# Copy the specified directories
+for config in "${directories[@]}"; do
+    copy_config "$config"
+done
+
+echo "Copy complete."
