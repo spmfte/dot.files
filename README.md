@@ -27,5 +27,3 @@ Each system gets its own directory. Currently, there's just a setup for my ASUS 
 ## Philosophy
 
 This repo is my humble attempt to keep things organized without overcomplicating them. It's a continuous work in progress, and I tweak it as I learn and grow in my journey as a developer.
-
-Feel free to browse around, and if something catches your eye or if you have a suggestion, I'm all ears!
