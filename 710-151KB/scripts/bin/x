@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Read from standard input and copy to clipboard
+xclip -selection clipboard
+

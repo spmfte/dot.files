@@ -1,0 +1,65 @@
+#!/bin/zsh
+
+# Dynamic progress bar
+progress_bar() {
+  local duration=$1
+  local steps=50
+  local step=0
+  echo -n "["
+  while [ $step -le $steps ]; do
+    # Print the progress bar
+    for i in $(seq 1 $step); do echo -n "="; done
+    for i in $(seq 1 $((steps - step))); do echo -n " "; done
+    echo -n "]"
+
+    # Move the cursor to the beginning of the line
+    echo -en "\r"
+
+    sleep $duration
+    step=$((step + 1))
+  done
+  echo
+}
+
+# Update system
+echo "Updating system..."
+(sleep 2; sudo pacman -Syu) &
+pid=$!
+progress_bar 0.1 | lolcat
+wait $pid
+echo "Done" | lolcat
+
+# Remove unused packages
+echo "Removing unused packages..."
+(sleep 2; sudo pacman -Rns $(pacman -Qdtq)) &
+pid=$!
+progress_bar 0.1 | lolcat
+wait $pid
+echo "Done" | lolcat
+
+# Clear package cache
+echo "Clearing package cache..."
+(sleep 2; sudo pacman -Scc) &
+pid=$!
+progress_bar 0.1 | lolcat
+wait $pid
+echo "Done" | lolcat
+
+# Clear temp files
+echo "Clearing temporary files..."
+(sleep 2; sudo rm -rf /tmp/*; rm -rf ~/.cache/*) &
+pid=$!
+progress_bar 0.1 | lolcat
+wait $pid
+echo "Done" | lolcat
+
+# Empty trash
+echo "Emptying trash..."
+(sleep 2; rm -rf ~/.local/share/Trash/*) &
+pid=$!
+progress_bar 0.1 | lolcat
+wait $pid
+echo "Done" | lolcat
+
+echo "System cleanup complete!" | lolcat
+

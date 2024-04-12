@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: volume {0-100}"
+  exit 1
+fi
+
+scaled_value=$1
+
+# Set the Master volume to the scaled value
+amixer set Master ${scaled_value}%
+
+# Optionally, you can also set the PCM volume
+# amixer set PCM ${scaled_value}%
+
