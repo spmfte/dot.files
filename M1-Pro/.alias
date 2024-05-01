@@ -1,6 +1,6 @@
 alias adda="$HOME/scripts/sh/add-alias.sh"
 alias allup="vimup && ./scripts/sh/dotup.sh && ./scripts/sh/scriptup.sh"
-alias anime="ani-cli --dub"
+alias anime="anime-episode-persistence"
 alias apu="say -v Neel\ \(Enhanced\)"
 alias c="clear"
 alias cdc="cd && clear"
@@ -47,3 +47,4 @@ alias pwx="pwd|x"
 alias trex="tree|x"
 alias fz='fzf --extended --no-bold --color="fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#d3869b,info:#8ec07c,prompt:#b8bb26,pointer:#fe8019,marker:#fb4934,spinner:#b8bb26,header:#bdae93" --border=rounded --pointer="" --marker="✓" --header="Select an item:" --preview="bat --style=numbers --color=always {}" --preview-window="right:50%,rounded,border-horizontal" --info="inline" --prompt="> " --layout=reverse --height=100% --ansi --bind="ctrl-n:down,ctrl-p:up,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-b:page-up,ctrl-f:page-down,esc:abort,enter:execute(nvim {})+abort,alt-enter:accept"'
 
+alias hawgs="/Users/aidan/scripts/sys/./hawgml.sh"
