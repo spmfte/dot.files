@@ -26,9 +26,19 @@ eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Tre command 
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 source /tmp/tre_aliases_$USER
 
+# Custom CAX cmd
+cax() {
+    cat "$1" | pbcopy
+}
+
+# walk function 
+function lk {
+  cd "$(walk "$@")"
+}
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
  __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
