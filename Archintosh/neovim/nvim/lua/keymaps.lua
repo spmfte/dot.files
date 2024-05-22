@@ -15,9 +15,16 @@ end
 
 -- Remap ';' to ':' so you don't need to press Shift
 map('n', ';', ':')
+map('v', ';', ':')
+map('c', ';', ':')
+map('x', ';', ':')
 
--- NERDTree Toggle
+-- NERDTree Toggle and Focus
 map('n', '<leader>e', ':NERDTreeToggle<CR>')
+map('n', '<leader>n', ':NERDTreeFocus<CR>')
+map('n', '<C-n>', ':NERDTree<CR>')
+map('n', '<C-t>', ':NERDTreeToggle<CR>')
+map('n', '<C-f>', ':NERDTreeFind<CR>')
 
 -- Save file
 map('n', '<leader>w', ':w<CR>')
