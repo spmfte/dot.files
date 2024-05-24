@@ -53,4 +53,11 @@ function lk {
  fi
  unset __conda_setup
 # # <<< conda initialize <<<
-#
+
+# FZF Config
+
+# Source .fzf.conf
+if [ -f ~/.config/fzf/fzf.config ]; then
+  source ~/.config/fzf/fzf.config
+fi
+
