@@ -61,3 +61,5 @@ if [ -f ~/.config/fzf/fzf.config ]; then
   source ~/.config/fzf/fzf.config
 fi
 
+export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
+export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
