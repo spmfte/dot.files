@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-clap = { version = "4.5.7", features = ["derive"] }
-bat = "0.24.0"
-rayon = "1.5.3"
+clap = { version = "3.0", features = ["derive"] }
+rayon = "1.5"
+log = "0.4"
+env_logger = "0.9"
+clipboard = "0.5.0"
