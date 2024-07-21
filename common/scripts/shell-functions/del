@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Define color and style variables
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+WHITE='\033[0;37m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+del() {
+    if [ -z "$1" ]; then
+        echo -e "${RED}Usage: del <file_or_directory>${NC}"
+        return 1
+    fi
+
+    if [ -d "$1" ]; then
+        read -p "$(echo -e ${RED}${BOLD}$1${NC}${BLUE} is a directory.${YELLOW} Delete anyways? ${WHITE}[${GREEN}Y${WHITE}/${RED}n${WHITE}]${NC}) " confirm
+        if [[ $confirm =~ ^[Yy]$ || -z $confirm ]]; then
+            rm -rf "$1"
+            echo -e "${GREEN}Directory '$1' has been deleted.${NC}"
+        else
+            echo -e "${RED}Deletion aborted.${NC}"
+        fi
+    else
+        rm -f "$1"
+    fi
+}
+
+# Call the function with the provided argument
+del "$1"
