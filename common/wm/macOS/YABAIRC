@@ -1,0 +1,78 @@
+#!/usr/bin/env sh
+export PATH="/opt/homebrew/bin:$PATH"
+
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+yabai -m rule --add app="^System Preferences$" manage=off
+
+yabai -m signal --add event=window_created app=^SystemUIServer$ action="yabai -m window --focus $$id"
+
+#
+ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+ sudo yabai --load-sa
+#
+#2023-11-07
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"widget\"'"
+
+
+# bar settings
+# 2023-11-11
+# yabai -m config status_bar                   on
+# yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
+# yabai -m config status_bar_icon_font         "FontAwesome:Regular:12.0"
+# yabai -m config status_bar_background_color  0xff202020
+# yabai -m config status_bar_foreground_color  0xffa8a8a8
+# yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
+# yabai -m config status_bar_power_icon_strip   
+# yabai -m config status_bar_space_icon        
+# yabai -m config status_bar_clock_icon        
+
+# Global settings for yabai
+yabai -m config mouse_follows_focus on 
+yabai -m config focus_follows_mouse on
+yabai -m config window_origin_display default
+yabai -m config window_placement second_child
+yabai -m config window_zoom_persist on
+yabai -m config window_topmost off
+yabai -m config window_shadow off
+yabai -m config window_animation_duration 0.0
+yabai -m config window_animation_frame_rate 120
+yabai -m config window_opacity_duration 0.0
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.90
+yabai -m config window_opacity off
+yabai -m config insert_feedback_color 0xffd75f5f
+yabai -m config active_window_border_color 0xff9b7eed
+yabai -m config normal_window_border_color 0xff51a9bd
+yabai -m config window_border_width 1
+yabai -m config window_border_radius 12
+yabai -m config window_border_blur off
+yabai -m config window_border_hidpi on
+yabai -m config window_border off
+yabai -m config split_ratio 0.50
+yabai -m config split_type auto
+yabai -m config auto_balance off
+yabai -m config top_padding 38
+yabai -m config bottom_padding 05
+yabai -m config left_padding 05
+yabai -m config right_padding 05
+yabai -m config window_gap 03
+yabai -m config layout bsp
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
+
+echo "yabai configuration loaded.."
+
+# default padding:
+# top_padding 25
+# bottom_padding 12
+# left_padding 12
+# right_padding 12
+# window_gap 06
