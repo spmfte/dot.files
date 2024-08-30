@@ -4,7 +4,9 @@ export PATH="/opt/homebrew/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 export PYTHON="/opt/homebrew/bin/python3"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/share/zsh/site-functions:$PATH"
 export EDITOR=nvim
+export FZF_DEFAULT_OPTS='--tmux center'
 
 ZSH_THEME="mrp"
 
@@ -39,6 +41,7 @@ cax() {
 function lk {
   cd "$(walk "$@")"
 }
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
  __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
