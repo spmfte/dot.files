@@ -97,7 +97,7 @@ my_precmd() {
 add-zsh-hook precmd my_precmd
 
 # Define the second line as the actual prompt
-PROMPT='  󱞪%f '
+PROMPT=' 󱞪%f '
 
 # Options
 setopt PROMPT_SUBST
