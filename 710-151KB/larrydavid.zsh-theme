@@ -88,16 +88,16 @@ my_precmd() {
     # Colorize username@hostname with hardcoded colors
     local user_host="$(colorize_alternate "%n@%m" "$r_color" "$b_color" "$y_color" "$g_color")"
     # Colorize current working directory with Pywal colors
-    local cwd="$(colorize_alternate "%~" "$pw_color1" "$pw_color2" "$pw_color3" "$pw_color4")"
+    local cwd="$(colorize_alternate "" "$pw_color1" "$pw_color2" "$pw_color3" "$pw_color4")"
     # Now print the first line of the prompt
-    print -P "${user_host} ${cwd} ${vcs_info_msg_0_}"
+    print -P "\n${user_host} ${cwd} ${vcs_info_msg_0_}"
 }
 
 # Add the precmd hook
 add-zsh-hook precmd my_precmd
 
 # Define the second line as the actual prompt
-PROMPT='󱞩%f '
+PROMPT='  󱞪%f '
 
 # Options
 setopt PROMPT_SUBST
