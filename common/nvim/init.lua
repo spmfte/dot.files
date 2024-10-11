@@ -1,5 +1,6 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = " "
+vim.opt.shell = "/bin/zsh"
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -37,3 +38,4 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+

@@ -1,63 +1,53 @@
----@class MyChadrcConfig : ChadrcConfig
----@field options table
-local M = {}
+-- Define your custom options
+local options = {
 
--- Path to overriding theme and highlights files
-------------------------------------------------------------------------
-------------------------------- BEGIN COPY -----------------------------
-------------------------------------------------------------------------
-M.ui = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "catppuccin" },
-  hl_override = {
-     NvDashAscii = {
-      bg ="none",
-      fg ="blue"
-    },
+  -- Base46 Theme Configurations
+  base46 = {
+    theme = "jabuti",  -- Replace with your theme
+    hl_override = {
+      NvDashAscii = {
+        bg = "none",
+        fg = "blue"
+      },
       NvDashButtons = {
-      bg = "none",
-      fg = "#abb7c1"
+        bg = "none",
+        fg = "#abb7c1"
+      },
     },
-  } ,
-  transparency = false,
-  lsp_semantic_tokens = true,
-
- -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {"notify"}, -- these aren't compiled by default, ex: "alpha", "notify"
-
-  -- cmp themeing
-  cmp = {
-    icons = true,
-    lspkind_text = true,
-    style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
-    border_color = "default", -- only applicable for "default" style, use color names from base30 variables
-    selected_item_bg = "colored", -- colored / simple
+    transparency = false,
+    theme_toggle = { "jabuti", "jabuti" },
+    extended_integrations = { "notify" }, -- Additional integrations
   },
 
-  telescope = { style = "bordered" }, -- borderless / bordered
+  -- UI configurations
+  ui = {
+    cmp = {
+      icons_left = true,
+      lspkind_text = true,
+      style = "atom_colored",
+      format_colors = {
+        tailwind = false, -- Disable tailwind icon colors
+        icon = "󱓻",
+      },
+    },
 
-  ------------------------------- nvchad_ui modules -----------------------------
-  statusline = {
-    theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
-    -- default/round/block/arrow separators work only for default statusline theme
-    -- round and block will work for minimal theme only
-    separator_style = "default",
-    overriden_modules = nil,
+    telescope = { style = "bordered" }, -- Keep "bordered" style for Telescope
+
+    statusline = {
+      theme = "vscode_colored", -- Custom theme
+      separator_style = "default", -- Separator style for statusline
+    },
+
+    tabufline = {
+      enabled = true,
+      lazyload = true,
+      order = { "treeOffset", "buffers", "tabs", "btns" },
+    },
   },
 
-  -- lazyload it when there are 1+ buffers
-  tabufline = {
-    show_numbers = false,
-    enabled = true,
-    lazyload = true,
-    overriden_modules = nil,
-  },
-
-  -- nvdash (dashboard)
+  -- Nvdash dashboard configuration
   nvdash = {
     load_on_startup = true,
-    transparency = false,
-
     header = {
       "         Aidan Littman           ",
       "           ▄ ▄                   ",
@@ -69,30 +59,43 @@ M.ui = {
       "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
       "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
       "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
+      "                                 ",
     },
 
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
-      { " NeoVim Config", "Spc c n", "OpenNvimConfig" },
+      { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
+      { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
+      { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
+      { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
+      { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
+      { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+      { txt = " NeoVim Config", keys = "Spc c n", cmd = "OpenNvimConfig" },
+
+      { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
+
+      {
+        txt = function()
+          local stats = require("lazy").stats()
+          local ms = math.floor(stats.startuptime) .. " ms"
+          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+        end,
+        hl = "NvDashLazy",
+        no_gap = true,
+      },
+
+      { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
     },
   },
 
-  cheatsheet = { theme = "grid" }, -- simple/grid
-
+    --
+  -- LSP settings
   lsp = {
-    -- show function signatures i.e args as you type
     signature = {
       disabled = false,
-      silent = true, -- silences 'no signature help available' message from appearing
+      silent = true, -- Silence 'no signature help available'
     },
   },
 }
-
 
 
 -- This maps the key combination 'Spc c n' to execute the 'OpenNvimConfig' command directly
@@ -117,29 +120,11 @@ function! InsertFullWidthLine(character)
 endfunction
 ]])
 
--- Commands to insert full-width lines
-vim.cmd("command! LB call InsertFullWidthLine('—')")
-vim.cmd("command! WaveBreak call InsertFullWidthLine('~')")
-vim.cmd("command! DottedBreak call InsertFullWidthLine('*')")
-vim.cmd("command! PlusBreak call InsertFullWidthLine('+')")
-vim.cmd("command! EqBreak call InsertFullWidthLine('=')")
-
--- Formatting templates
-vim.cmd("command! Bold normal! i**Bold Text**\\<CR>")
-vim.cmd("command! Italic normal! i*Italic Text*\\<CR>")
-
 -- Add a vim command to toggle transparency using NvChad's method
 vim.cmd("command! Bg lua require'base46'.toggle_transparency()")
 
 -- run lazy update from 'U'
 vim.cmd("command! U :Lazy update")
-------------------------------------------------------------------------
-------------------------------- END COPY -------------------------------
-------------------------------------------------------------------------
-M.plugins = "custom.plugins"
-
--- Check core.mappings for table structure
--- M.mappings = require "custom.mappings"
-
-return M
-
+-- Merging with the current 'chadrc'
+local status, chadrc = pcall(require, "chadrc")
+return vim.tbl_deep_extend("force", options, status and chadrc or {})
