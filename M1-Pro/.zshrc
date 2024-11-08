@@ -7,6 +7,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/share/zsh/site-functions:$PATH"
 export EDITOR=nvim
 export FZF_DEFAULT_OPTS='--tmux center'
+export PATH="Users/aidan/.local/lib/python3.11/site-packages:$PATH"
+export PATH="/Users/aidan/.local/bin:$PATH"
+
+export PS2=" "
 
 ZSH_THEME="mrp"
 
@@ -37,9 +41,14 @@ cax() {
     cat "$1" | pbcopy
 }
 
+# calculate function
+whats ()
+{
+    echo $(($1))
+}
 # walk function 
 function lk {
-  cd "$(walk "$@")"
+    cd "$(walk "$@")"
 }
 
 # >>> conda initialize >>>
