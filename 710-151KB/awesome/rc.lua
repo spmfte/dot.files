@@ -288,6 +288,10 @@ globalkeys = mytable.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
+  -- dmenu
+  awful.key({ "Control" }, "Escape", function () awful.spawn("/home/aidan/.config/rofi/launchers/type-3/launcher.sh") end,
+              {description = "launch rofi launcher", group = "custom"}),
+
     -- Default client focus
     awful.key({ altkey,           }, "j",
         function ()

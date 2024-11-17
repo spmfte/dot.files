@@ -34,7 +34,7 @@ style = "Beam"
 thickness = 0.125
 
 [font]
-size = 8.0
+size = 7.0
 
 [font.bold]
 family = "Fira Code"
@@ -54,6 +54,9 @@ hide_when_typing = true
 [scrolling]
 history = 5000
 multiplier = 3
+
+[selection]
+save_to_clipboard = true
 
 [window]
 decorations = "none"
