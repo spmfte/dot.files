@@ -57,5 +57,7 @@ alias view="nvim"
 alias gdx="git diff | x"
 alias gdsx="git diff --staged | x"
 alias up="tmux popup"
-
+alias lst="ls --tree --depth 1"
 alias o="open"
+alias ci="/Users/aidan/scripts/sh/./failed_vi.sh"
+alias todo="tuiodo"

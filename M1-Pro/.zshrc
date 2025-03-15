@@ -51,6 +51,20 @@ function lk {
     cd "$(walk "$@")"
 }
 
+bgtime() {
+  # Trigger the start of a background task
+  sketchybar --trigger bg_task_started
+
+  # Run the given command
+  "$@"
+  exit_status=$?
+
+  # When the command completes, trigger the finish event
+  sketchybar --trigger bg_task_finished
+
+  return $exit_status
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
  __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -77,3 +91,6 @@ export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
 export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
 
 export MANPAGER='nvim +Man!'
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+# echo "Tasks for today:\n"
+# glow $HOME/TODO.md
