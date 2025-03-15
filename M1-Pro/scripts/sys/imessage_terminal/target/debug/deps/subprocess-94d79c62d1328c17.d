@@ -1,0 +1,10 @@
+/Users/aidan/scripts/sys/imessage_terminal/target/debug/deps/libsubprocess-94d79c62d1328c17.rmeta: /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs
+
+/Users/aidan/scripts/sys/imessage_terminal/target/debug/deps/subprocess-94d79c62d1328c17.d: /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs /Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs
+
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/lib.rs:
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/builder.rs:
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/communicate.rs:
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/popen.rs:
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/posix.rs:
+/Users/aidan/.cargo/registry/src/index.crates.io-6f17d22bba15001f/subprocess-0.2.9/src/os_common.rs:
